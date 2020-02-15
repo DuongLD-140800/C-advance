@@ -7,7 +7,7 @@ typedef struct test {
 	char keyChar[30];
 }test;
 
-#define MAX 100000000
+#define MAX 1000000
 void printArray(int a[], int size) {
 	for (int i = 0; i < size; ++i)
 	{
@@ -78,7 +78,6 @@ int main(int argc, char const *argv[])
 {
 	int *a = NULL;
 	createArray(&a);
-
 	clock_t start, end;
 	double cpu_time_used;
 	start = clock();
