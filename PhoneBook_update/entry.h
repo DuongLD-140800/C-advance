@@ -20,7 +20,7 @@ typedef struct {
 #define INITIAL_SIZE 100
 #define INCREMENTAL_SIZE 10
 
-void memCpy(void *p1, const void *p2, int size);
+void memCpy(void *p1, const void *p2, size_t size);
 void reAlloc(SymbolTable *book);
 SymbolTable createSymbolTable(
 	Entry (*makeNode)(void *, void *),
