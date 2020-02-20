@@ -61,7 +61,7 @@ void createOrGetData(SymbolTable *book) {
 void addPhone(SymbolTable *book) {
 	printf("\n");
     if (book->entries == NULL) {
-        printf("Phone Book 's entries now is NULL\n");
+        printf("Phone Book 's entriesPointer now is NULL\n");
         printf("(!) You have choose <1. Create Phone Book> first\n");
         printf("     to choose <2. Add phone>\n");
         return;

@@ -35,7 +35,7 @@ MENU:
         default: {
             printf("\n");
             if (book.entries != NULL) {
-                printf("(!) Phone Book 's entries_Pointer is different from NULL\n");
+                printf("(!) Phone Book 's entriesPointer is different from NULL\n");
                 printf(" -  You must be obliged to drop Phone Book before.\n");
                 goto MENU;
             }
