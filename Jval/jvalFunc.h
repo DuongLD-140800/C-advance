@@ -1,8 +1,12 @@
-#ifndef _MAIN_H
-#define _MAIN_H
+/*
+ Luong Duc Duong
+ jvalFunc.h
+ */
+
+#ifndef _JVALFUNC_H
+#define _JVALFUNC_H
 
 #include "jval.h"
-#include <time.h>
 
 void swap_gen (Jval a[], int i, int j);
 void sort_gen ( Jval a[], int l, int r, int (*compare)(Jval*, Jval*) );
@@ -53,7 +57,7 @@ Jval* create_array_i (int n) {
 	srand(time(NULL));
 	Jval *newArr = (Jval *) malloc (n * sizeof(Jval));
 	if (newArr == NULL) {
-		printf("Memory allocation not successed !\n");
+		printf("Memory allocated not successed !\n");
 		return NULL;
 	}
 	for (int i = 0; i < n; ++i) {
@@ -61,4 +65,4 @@ Jval* create_array_i (int n) {
 	}
 	return newArr;
 }
-#endif
+#endif /* jvalFunc.h */

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include "jvalFunc.h"
 #define MAX 10
 
 int main() {

@@ -1,8 +1,8 @@
 .PHONY: clean
 CC = gcc
 TARGET = test
-OBJ = main.o jval.o
-DEPS =  main.h jval.h
+OBJ = main.o	jval.o
+DEPS = jvalFunc.h	jval.h
 
 $(TARGET): $(OBJ) 
 	$(CC) -o $@ $(OBJ)
@@ -11,3 +11,4 @@ $(TARGET): $(OBJ)
 
 clean:
 	rm -f $(TARGET) $(OBJ)
+
