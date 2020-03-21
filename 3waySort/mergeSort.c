@@ -14,7 +14,7 @@ void merge(void *buff, size_t size, int l, int m, int r, int (*compare)(void con
     /*
     	i Left    j Right     k tmp
     */
-    while (i <= m && j <= r) {
+    while (i <= m && j <= r) { 
         tempL = (void *) (buff + i * size);
         tempR = (void *) (buff + j * size);
         temp  = (void *) (tmp + k * size);
