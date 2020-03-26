@@ -22,6 +22,7 @@ MENU:
         }
         case 2: {
             addPhone(&book);
+            addPhone(  SymbolTable *book)
             break;
         }
         case 3: {

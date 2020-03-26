@@ -1,10 +1,15 @@
 #define INITIAL_SIZE 10 
 #define INCREMENTAL_SIZE 5
-//Chao cac ban
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 typedef struct { 
 	char name[80]; 
 	long number;
 } PhoneEntry;
+
 typedef struct { 
 	PhoneEntry * entries; 
 	int total;
@@ -25,15 +30,15 @@ PhoneEntry getUserData() {
 	return user;
 }
 PhoneBook createPhoneBook() {
-	PhoneBook new;
-	new.total = 0;
-	new.size = INITIAL_SIZE;
-	new.entries = (PhoneEntry *) malloc(new.size * sizeof(PhoneEntry));
-	if (new.entries == NULL) {
+	PhoneBook newP;
+	newP.total = 0;
+	newP.size = INITIAL_SIZE;
+	newP.entries = (PhoneEntry *) malloc(newP.size * sizeof(PhoneEntry));
+	if (newP.entries == NULL) {
 		printf("Memory allocation not successed !\n");
 		exit(1);
 	}
-	return new;
+	return newP;
 }
 void dropPhoneBook(PhoneBook* book) {
 	if (book->entries != NULL)

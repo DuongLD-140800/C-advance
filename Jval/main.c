@@ -9,7 +9,7 @@ int main() {
 	if (arr == NULL) return 1;
 	sort_gen(arr, 0, MAX - 1, compare_i);
 	print_array_i(arr, 0, MAX - 1);
-
+	
 	printf("\n- Enter number to find position : ");
 	int key = 0; scanf("%d", &key); getchar(); 
 	printf("Position \"%d\": %d\n",
