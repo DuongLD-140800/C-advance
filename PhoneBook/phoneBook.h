@@ -11,7 +11,7 @@ typedef struct {
 } PhoneEntry;
 
 typedef struct { 
-	PhoneEntry * entries; 
+	PhoneEntry *entries;
 	int total;
 	int size;
 } PhoneBook;
@@ -22,23 +22,23 @@ void addPhoneNumber(char *name, long number, PhoneBook *book);
 PhoneEntry* getPhoneNumber(char *name, PhoneBook book);
 
 PhoneEntry getUserData() {
-	PhoneEntry user;
+	PhoneEntry userData;
 	printf(" - Enter name : ");
-	scanf("%79[^\n]s", user.name); getchar();
+	scanf("%79[^\n]s", userData.name); getchar();
 	printf(" - Enter phone : ");
-	scanf("%ld", &user.number); getchar();
-	return user;
+	scanf("%ld", &userData.number); getchar();
+	return userData;
 }
 PhoneBook createPhoneBook() {
-	PhoneBook newP;
-	newP.total = 0;
-	newP.size = INITIAL_SIZE;
-	newP.entries = (PhoneEntry *) malloc(newP.size * sizeof(PhoneEntry));
-	if (newP.entries == NULL) {
-		printf("Memory allocation not successed !\n");
+	PhoneBook newPb;
+	newPb.total = 0;
+	newPb.size = INITIAL_SIZE;
+	newPb.entries = (PhoneEntry *) malloc(newPb.size * sizeof(PhoneEntry));
+	if (newPb.entries == NULL) {
+		printf("Malloc not successed !\n");
 		exit(1);
 	}
-	return newP;
+	return newPb;
 }
 void dropPhoneBook(PhoneBook* book) {
 	if (book->entries != NULL)
@@ -53,7 +53,8 @@ PhoneEntry* getPhoneNumber(char * name, PhoneBook book) {
 }
 void reAllocation(PhoneBook *book) {
 	book->entries = (PhoneEntry *) 
-						realloc(book->entries,(book->size += INCREMENTAL_SIZE) * sizeof(PhoneEntry));
+						realloc(book->entries,
+							(book->size += INCREMENTAL_SIZE) * sizeof(PhoneEntry));
 	if (book->entries == NULL) {
 		printf("Realloc not successed !\n");
 		exit(1);
@@ -67,5 +68,6 @@ void addPhoneNumber(char *name, long number, PhoneBook *book) {
 		}
 		book->entries[book->total - 1].number = number;
 		strcpy(book->entries[book->total - 1].name, name);
+		
 	} else where->number = number;
 }
