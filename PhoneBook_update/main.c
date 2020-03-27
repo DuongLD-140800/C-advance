@@ -6,8 +6,8 @@
 //  Copyright © 2020 Lương Dương. All rights reserved.
 //
 
-#include "main.h"
-#include <stdio.h>
+#include "phoneBook.h"
+
 
 int main() {
     SymbolTable book;
@@ -17,12 +17,11 @@ MENU:
     int choose = getChoose(5);
     switch(choose) {
         case 1: {
-            createOrGetData(&book);
+            createOrGetInfo(&book);
             break;
         }
         case 2: {
             addPhone(&book);
-            addPhone(  SymbolTable *book)
             break;
         }
         case 3: {
@@ -37,7 +36,7 @@ MENU:
             printf("\n");
             if (book.entries != NULL) {
                 printf("(!) Phone Book 's entriesPointer is different from NULL\n");
-                printf(" -  You must be obliged to drop Phone Book before.\n");
+                printf(" -  You must drop the Phone Book first.\n");
                 goto MENU;
             }
             printf("**Exit   \n");

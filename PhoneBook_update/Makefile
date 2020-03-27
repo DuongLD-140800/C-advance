@@ -3,7 +3,7 @@
 CC = gcc
 TARGET = test
 OBJ = main.o entry.o
-DEPS = main.h entry.h
+DEPS = phoneBook.h entry.h
 
 $(TARGET): $(OBJ)
 	$(CC)	-o	$@	$(OBJ)

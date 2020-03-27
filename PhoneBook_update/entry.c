@@ -1,10 +1,27 @@
+/**
+ * Luong Duc Duong
+ * 27/03/2020
+ *
+ * C_advance
+ * entry.c
+ */
+
+
 #include "entry.h"
 
-void memCpy(void *p1, const void *p2, size_t size) {
-	const char *first = (const char *)p2;
-	const char *last = (const char *)p2 + size;
-	char *cpy = (char *)p1;
-	while (first != last) *cpy++ = *first++; 
+void insertionSort(SymbolTable *book) {
+	Entry pivot;
+	int j = 0;
+	for (int i = 0; i < book->total; i++) {
+		pivot = book->entries[i];
+		j = i - 1;
+
+		while (j >= 0 && book->compare(book->entries[j].key, pivot.key) > 0) {
+			memcpy(&book->entries[j + 1], &book->entries[j], sizeof(Entry));
+			j = j - 1;
+		}
+		memcpy(&book->entries[j + 1], &pivot, sizeof(Entry));
+	}
 }
 void reAllocEntries(SymbolTable *book) {
 	book->entries = (Entry *) realloc(book->entries, 
@@ -14,7 +31,6 @@ void reAllocEntries(SymbolTable *book) {
 		exit(1);
 	}
 }
-
 SymbolTable createSymbolTable(
 	Entry (*makeNode)(void *, void *),
 	int (*compare)(void *, void *)
@@ -46,15 +62,16 @@ void dropSymbolTable(SymbolTable* tab) {
 	tab->total = 0;
     printf("Drop entries successed !\n");
 }
-Entry *getEntry(void *key, SymbolTable book) {
-	for (int i = 0; i < book.total; i++) {
-		if (book.compare(book.entries[i].key, key) == 0)
-			return (book.entries + i);
-	}
-	return NULL;
+Entry *getEntry(void *key, SymbolTable book, int l, int r) {
+	if (l > r) return NULL;
+	int arg = (l + r) / 2;
+	int compare = book.compare(book.entries[arg].key, key);
+	if (compare == 0) return &book.entries[arg];
+	else if (compare > 0) return getEntry(key, book, l, arg - 1);
+	else return getEntry(key, book, arg + 1, r);
 }
 void addEntry(void * key, void *value, SymbolTable *book) {
-	Entry *where = getEntry(key, *book);
+	Entry *where = getEntry(key, *book, 0, book->total - 1);
 	if (where != NULL) {
 		*where = book->makeNode(key, value);
 	} else {

@@ -1,3 +1,12 @@
+/**
+ * Luong Duc Duong
+ * 27/03/2020
+ *
+ * C_advance
+ * entry.h
+ */
+
+
 #ifndef DEF_entry
 #define DEF_entry
 
@@ -20,7 +29,7 @@ typedef struct {
 #define INITIAL_SIZE 100
 #define INCREMENTAL_SIZE 10
 
-void memCpy(void *p1, const void *p2, size_t size);
+void insertionSort(SymbolTable *book);
 void reAlloc(SymbolTable *book);
 SymbolTable createSymbolTable(
 	Entry (*makeNode)(void *, void *),
@@ -28,8 +37,8 @@ SymbolTable createSymbolTable(
 );
 void dropSymbolTable(SymbolTable* tab);
 void addEntry(void * key, void *value, SymbolTable *book);
-Entry *getEntry(void *key, SymbolTable book);
+Entry *getEntry(void *key, SymbolTable book, int l, int r);
 
-#endif
+#endif	/*entry.h*/
 
 
