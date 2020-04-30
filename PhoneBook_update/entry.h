@@ -7,8 +7,8 @@
  */
 
 
-#ifndef DEF_entry
-#define DEF_entry
+#ifndef _ENTRY_H
+#define _ENTRY_H
 
 #include <string.h>
 #include <stdio.h>

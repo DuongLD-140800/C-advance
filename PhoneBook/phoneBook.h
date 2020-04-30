@@ -1,3 +1,15 @@
+/**
+ * 27/03/2020
+ * Luong Duc Duong
+ * 
+ * C_advance
+ * phoneBook.h
+ */
+
+#ifndef _PHONEBOOK_H
+#define _PHONEBOOK_H
+
+
 #define INITIAL_SIZE 10 
 #define INCREMENTAL_SIZE 5
 
@@ -29,21 +41,35 @@ PhoneEntry getUserData() {
 	scanf("%ld", &userData.number); getchar();
 	return userData;
 }
+/**
+ * create new array with struct PhoneBook & size = INITIAL_SIZE by malloc()
+ * @return address of new array
+ */
 PhoneBook createPhoneBook() {
 	PhoneBook newPb;
 	newPb.total = 0;
 	newPb.size = INITIAL_SIZE;
 	newPb.entries = (PhoneEntry *) malloc(newPb.size * sizeof(PhoneEntry));
 	if (newPb.entries == NULL) {
-		printf("Malloc not successed !\n");
+		printf("Malloc failed!\n");
 		exit(1);
 	}
 	return newPb;
 }
+/**
+ * drop array *entries in book
+ * @param book PhoneBook*
+ */
 void dropPhoneBook(PhoneBook* book) {
 	if (book->entries != NULL)
 		free(book->entries);
 }
+/**
+ * find in book with key
+ * @param  name char* (key)
+ * @param  book PhoneBook
+ * @return      address of key
+ */
 PhoneEntry* getPhoneNumber(char * name, PhoneBook book) {
 	for (int i = 0; i < book.total; i++) {
 		if (strcmp(name, book.entries[i].name) == 0)
@@ -51,23 +77,38 @@ PhoneEntry* getPhoneNumber(char * name, PhoneBook book) {
 	}
 	return NULL;
 }
-void reAllocation(PhoneBook *book) {
+/**
+ * re Allocate memory for book with size increased by INCREMENTAL_SIZE
+ * @param book PhoneBook*
+ */
+void reAllocPb(PhoneBook *book) {
 	book->entries = (PhoneEntry *) 
 						realloc(book->entries,
 							(book->size += INCREMENTAL_SIZE) * sizeof(PhoneEntry));
 	if (book->entries == NULL) {
-		printf("Realloc not successed !\n");
-		exit(1);
+		printf("Realloc failed!\n");
+		exit(2);
 	}
 }
+/**
+ * add new entry to book
+ * @param name   char*
+ * @param number long
+ * @param book   PhoneBook
+ */
 void addPhoneNumber(char *name, long number, PhoneBook *book) {
 	PhoneEntry *where = getPhoneNumber(name, *book);
 	if (where == NULL) {
 		if (++book->total > book->size) {
-			reAllocation(book);
+			reAllocPb(book);
 		}
 		book->entries[book->total - 1].number = number;
 		strcpy(book->entries[book->total - 1].name, name);
 		
 	} else where->number = number;
 }
+
+#endif
+
+
+

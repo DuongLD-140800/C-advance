@@ -66,6 +66,8 @@ Entry *getEntry(void *key, SymbolTable book, int l, int r) {
 	if (l > r) return NULL;
 	int arg = (l + r) / 2;
 	int compare = book.compare(book.entries[arg].key, key);
+    
+    //binary search
 	if (compare == 0) return &book.entries[arg];
 	else if (compare > 0) return getEntry(key, book, l, arg - 1);
 	else return getEntry(key, book, arg + 1, r);
@@ -78,5 +80,6 @@ void addEntry(void * key, void *value, SymbolTable *book) {
 		if (++(book->total) > book->size)
 			reAllocEntries(book);
 		book->entries[book->total - 1] = book->makeNode(key, value);
+		insertionSort(book);
 	}
 }

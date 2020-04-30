@@ -28,7 +28,7 @@ MENU:
   }
   case 2: {
     printf("\n");
-    printf("Enter numbers to add : ");
+    printf("Enter number(s) to add : ");
     int number = 0;
     scanf("%d", &number);
     getchar();
@@ -57,7 +57,7 @@ MENU:
     printf("\n");
     dropPhoneBook(&book);
     printf("Drop phone book successed !\n");
-    printf("Exit programs\n");
+    printf("Exit program\n\n");
     return 0;
   }
   }
