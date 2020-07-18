@@ -36,6 +36,7 @@ Fax: 865-974-4404
 */
 
 #include <stdio.h>    /* Basic includes and definitions */
+#include <stdlib.h>
 #include "dllist.h"
 
 /*---------------------------------------------------------------------*
@@ -91,12 +92,12 @@ void dll_delete_node(Dllist node)		/* Deletes an arbitrary iterm */
   free(node);
 }
 
-void dll_empty(Dllist l)
+int dll_empty(Dllist l)
 {
   return (l->flink == l);
 }
  
-free_dllist(Dllist l)
+void free_dllist(Dllist l)
 {
   while (!dll_empty(l)) {
     dll_delete_node(dll_first(l));

@@ -9,6 +9,7 @@ typedef struct test {
 }test;
 
 #define MAX 1000000
+
 void printArray(int a[], int size) {
 	for (int i = 0; i < size; ++i)
 	{
@@ -16,12 +17,14 @@ void printArray(int a[], int size) {
 	}
 	printf("\n");
 }
+
 void memCpy(void *p1, const void *p2, size_t size) {
 	const char *first = (const char *)p2;
 	const char *last = (const char *)p2 + size;
 	char *cpy = (char *)p1;
 	while (first != last) *cpy++ = *first++; 
 }
+
 void exch(void *buff, int i, int j, size_t size) {
 	void *swap = malloc(size);
 	void *p1 = buff + i * size;
@@ -31,6 +34,7 @@ void exch(void *buff, int i, int j, size_t size) {
 	memCpy(p2, swap, size);
 	free(swap);
 }
+
 void sort(void *buff, int l, int r, size_t size, int (*compare)(const void *, const void *)) {
 	if (l > r) return;
 	int i = l - 1, p = l - 1;
@@ -56,6 +60,7 @@ void sort(void *buff, int l, int r, size_t size, int (*compare)(const void *, co
 	sort(buff, l, j, size, compare);
 	sort(buff, i, r, size, compare);
 }
+
 void createArray(int **a) {
 	srand(time(NULL));
 	*a = (int *) malloc(MAX * sizeof(int));
@@ -64,17 +69,22 @@ void createArray(int **a) {
 		*(*a + i) = rand() % 10;
 	}
 }
+
 int int_Compare(const void *x,const void *y) {
 	int m = *((int *)x);
 	int n = *((int *)y);
 	if (m == n) return 0;
 	return m > n ? 1:-1;
 }
+
+
 int struct_Compare(const void *x, const void *y) {
 	test m = *((test *)x);
 	test n = *((test *)y);
 	return strcmp(m.keyChar, n.keyChar);
 }
+
+
 int main(int argc, char const *argv[])
 {
 	int *a = NULL;

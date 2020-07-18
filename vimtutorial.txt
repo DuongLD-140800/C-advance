@@ -1,0 +1,10 @@
+Most of the time, that’s not sufficient, so you can add a range like so:
+
+:8,10 s/search/replace/g
+
+If you want to search an entire file, you can use % to indicate that as the range:
+
+:%s/search/replace/g
+:%s/search/replace/gc
+
+

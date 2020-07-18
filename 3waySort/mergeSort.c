@@ -6,7 +6,7 @@ void merge(void *buff, size_t size, int l, int m, int r, int (*compare)(void con
     void *tmp = NULL;
     tmp = malloc ((r - l + 1) * size);
     if (tmp == NULL) {
-        fprintf(stderr, "Malloc failed");
+        printf("[!] Malloc not successed\n");
         exit(-1);
     }
     char *tempL = NULL, *tempR = NULL, *temp = NULL;
@@ -42,6 +42,7 @@ void merge(void *buff, size_t size, int l, int m, int r, int (*compare)(void con
         memcpy(buff + (i + l)*size, tmp + i*size, size);
     free(tmp);
 }
+
 void mergeSort(void *buff, size_t size, int l, int r, int (*compare)(void const *, void const *)) {
 	if (l >= r) return;
 	int mid = (l + r) / 2;
